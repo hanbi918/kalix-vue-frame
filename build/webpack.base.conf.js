@@ -34,7 +34,16 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
+      'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
+      'api': resolve('src/api'),
+      'components': resolve('src/components'),
+      'common': resolve('src/common'),
+      'mock': resolve('src/mock'),
+      'config': resolve('src/config'),
+      'store': resolve('src/store'),
+      'router': resolve('src/router'),
+      'views': resolve('src/views')
     }
   },
   module: {
@@ -65,6 +74,10 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('media/[name].[hash:7].[ext]')
         }
+      },
+      {
+        test: /\.toml$/,
+        loader: 'toml-loader'
       },
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
