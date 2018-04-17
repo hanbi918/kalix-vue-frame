@@ -23,14 +23,11 @@
 </template>
 
 <script type="text/ecmascript-6">
-  //  import Router from 'router'
-  import Message from 'common/message'
-  import Eventbus from 'common/eventbus'
-  import Cache from 'common/cache'
   import Login from 'api/login'
   import {logoutUrl} from 'config/global.toml'
 
   export default {
+    name: 'LoginForm',
     data() {
       return {
         name: 'Login Form',
@@ -55,7 +52,7 @@
     },
     activated() {
       this.loginForm = {name: '', pass: ''}
-      console.log('Eventbus', Eventbus)
+      console.log('this.$KalixEventBus', this.$KalixEventBus)
     },
     mounted() {
       this.$http.get(logoutUrl)
@@ -78,24 +75,24 @@
           'password': that.loginForm.pass
         }).then(data => {
           if (data.success) {
-            Cache.save('id', data.user.id)
-            Cache.save('access_token', data.access_token)
-            Cache.save('user_token', data.user.token)
-            Cache.save('user_name', data.user.name)
-            Cache.save('loginname', that.loginForm.name)
+            this.$KalixCatch.save('id', data.user.id)
+            this.$KalixCatch.save('access_token', data.access_token)
+            this.$KalixCatch.save('user_token', data.user.token)
+            this.$KalixCatch.save('user_name', data.user.name)
+            this.$KalixCatch.save('loginname', that.loginForm.name)
             // 在缓存中记录最后登录时间，处理单用户登录需求
             let now = new Date().getTime()
-            Cache._saveLocal('lastLoginTime', now)
-            Cache.save('lastLoginTime', now)
+            this.$KalixCatch._saveLocal('lastLoginTime', now)
+            this.$KalixCatch.save('lastLoginTime', now)
             this.$router.push({path: '/'})
           } else {
             this.$refs.loginFormName.focus()
-            Message.error(data.message)
+            this.$KalixMessage.error(data.message)
           }
         }).catch(error => {
           console.log('login error ', error)
           this.$refs.loginFormName.focus()
-          Message.error(error.message)
+          this.$KalixMessage.error(error.message)
         })
       },
       _validateForm() {

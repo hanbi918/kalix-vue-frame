@@ -11,7 +11,6 @@
         component(:is="which_to_show")
 </template>
 <script type="text/ecmascript-6">
-  import Cache from '@/common/cache.js'
   import {cacheTime, applicationURL, systemApplicationsBaseURL, userURL} from 'config/global.toml'
 
   console.log('cacheTime:', cacheTime)
@@ -19,9 +18,9 @@
   let content = {}
 
   export default {
+    name: 'KalixHome',
     data() {
       return {
-        name: 'kalixHome',
         isSmall: false,
         which_to_show: '',
         themeValue: null,
@@ -36,21 +35,21 @@
     watch: {'$route': 'fetchData'},
     methods: {
       initTheme() {
-        this.themeValue = Cache.get('styleTheme')
+        this.themeValue = this.$KalixCatch.get('styleTheme')
         if (!this.themeValue) {
-          let url = `/camel/rest/system/preferences/${Cache.get('loginname')}`
+          let url = `/camel/rest/system/preferences/${this.$KalixCatch.get('loginname')}`
           this.$http.get(url).then(res => {
             if (res && res.data && res.data.theme) {
               this.themeValue = res.data.theme
-              Cache.save('styleTheme', this.themeValue)
+              this.$KalixCatch.save('styleTheme', this.themeValue)
               // this.$refs.kalixHeader.setTheme(this.themeValue)
             } else {
-              Cache.save('styleTheme', 'theme-triton')
+              this.$KalixCatch.save('styleTheme', 'theme-triton')
               // this.$refs.kalixHeader.setTheme('theme-triton')
             }
           })
         } else {
-          Cache.save('styleTheme', this.themeValue)
+          this.$KalixCatch.save('styleTheme', this.themeValue)
           // this.$refs.kalixHeader.setTheme(this.themeValue)
         }
       },
@@ -68,18 +67,18 @@
         this.themeValue = value
         this.$http.request({
           method: 'PUT',
-          url: `/camel/rest/system/preferences/${Cache.get('loginname')}`,
+          url: `/camel/rest/system/preferences/${this.$KalixCatch.get('loginname')}`,
           params: {
             key: 'theme',
             value: value
           }
         }).then(res => {
         })
-        Cache.save('styleTheme', value)
+        this.$KalixCatch.save('styleTheme', value)
       },
       changePwd(txt) {
         let _data = {
-          jsonStr: '{"id":' + JSON.stringify(Cache.get('id')) + '}'
+          jsonStr: '{"id":' + JSON.stringify(this.$KalixCatch.get('id')) + '}'
         }
         this.$http.request(userURL, {
           params: _data
