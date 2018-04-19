@@ -7,6 +7,7 @@
   import Cache from 'kalix-vue-common/src/common/cache'
 
   export default {
+    name: 'Welcome',
     data() {
       return {
         name: null
@@ -23,7 +24,7 @@
         }
         this.name = this.$route.params.app || this.name
         this.getDict()
-//        console.log(this.$route.params.name);
+        // console.log(this.$route.params.name);
       },
       getDict() {
         if (this.name) {

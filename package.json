@@ -1,6 +1,6 @@
 {
   "name": "kalix-vue-frame",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Vue.js project",
   "author": "lhy <nenulhy@sina.com>",
   "private": true,
@@ -13,7 +13,8 @@
   "dependencies": {
     "axios": "^0.18.0",
     "element-ui": "^2.3.4",
-    "kalix-vue-navigate": "^1.0.3",
+    "kalix-vue-admin": "^0.0.20",
+    "kalix-vue-navigate": "^1.0.7",
     "vue": "^2.5.2",
     "vue-axios": "^2.1.1",
     "vue-router": "^3.0.1"

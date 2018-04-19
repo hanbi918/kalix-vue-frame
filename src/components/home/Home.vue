@@ -8,21 +8,24 @@
     div.s-flex.container
       kalix-navigate(v-bind:cacheTime="7200000" v-bind:url="systemApplicationsBaseURL")
       div.s-flex_item.article
-        component(:is="which_to_show")
+        component(v-bind:is="which_to_show")
 </template>
 <script type="text/ecmascript-6">
   import {cacheTime, applicationURL, systemApplicationsBaseURL, userURL} from 'config/global.toml'
+  import Welcome from '../welcome/welcome'
 
-  console.log('cacheTime:', cacheTime)
+  // console.log('cacheTime:', cacheTime)
 
-  let content = {}
+  // let content = {
+  //   adminUser
+  // }
 
   export default {
     name: 'KalixHome',
     data() {
       return {
         isSmall: false,
-        which_to_show: '',
+        which_to_show: null,
         themeValue: null,
         applicationURL: applicationURL,
         cacheTime: cacheTime,
@@ -61,6 +64,17 @@
         let fun = this.$route.params.fun // 功能名称
         console.log('APP：', app)
         console.log('FUN：', fun)
+
+        if (fun !== undefined) {
+          this.which_to_show = app + fun.toLowerCase()
+        } else {
+          this.which_to_show = 'Welcome'
+        }
+        // console.log('content：', content[app + fun])
+        // content.
+
+        // this.which_to_show = app + fun
+
         this.initTheme()
       },
       changeTheme(value) {
@@ -95,7 +109,8 @@
       }
     },
     components: {
-      KalixContent: content // 动态显示组件
+      // adminUser, // 动态显示组件
+      Welcome: Welcome
     }
   }
 </script>
