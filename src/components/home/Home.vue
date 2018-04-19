@@ -8,22 +8,24 @@
     div.s-flex.container
       kalix-navigate(v-bind:cacheTime="7200000" v-bind:url="systemApplicationsBaseURL")
       div.s-flex_item.article
-        component(:is="which_to_show")
+        component(v-bind:is="which_to_show")
 </template>
 <script type="text/ecmascript-6">
-  import Cache from '@/common/cache.js'
   import {cacheTime, applicationURL, systemApplicationsBaseURL, userURL} from 'config/global.toml'
+  import Welcome from '../welcome/welcome'
 
-  console.log('cacheTime:', cacheTime)
+  // console.log('cacheTime:', cacheTime)
 
-  let content = {}
+  // let content = {
+  //   adminUser
+  // }
 
   export default {
+    name: 'KalixHome',
     data() {
       return {
-        name: 'kalixHome',
         isSmall: false,
-        which_to_show: '',
+        which_to_show: null,
         themeValue: null,
         applicationURL: applicationURL,
         cacheTime: cacheTime,
@@ -36,21 +38,21 @@
     watch: {'$route': 'fetchData'},
     methods: {
       initTheme() {
-        this.themeValue = Cache.get('styleTheme')
+        this.themeValue = this.$KalixCatch.get('styleTheme')
         if (!this.themeValue) {
-          let url = `/camel/rest/system/preferences/${Cache.get('loginname')}`
+          let url = `/camel/rest/system/preferences/${this.$KalixCatch.get('loginname')}`
           this.$http.get(url).then(res => {
             if (res && res.data && res.data.theme) {
               this.themeValue = res.data.theme
-              Cache.save('styleTheme', this.themeValue)
+              this.$KalixCatch.save('styleTheme', this.themeValue)
               // this.$refs.kalixHeader.setTheme(this.themeValue)
             } else {
-              Cache.save('styleTheme', 'theme-triton')
+              this.$KalixCatch.save('styleTheme', 'theme-triton')
               // this.$refs.kalixHeader.setTheme('theme-triton')
             }
           })
         } else {
-          Cache.save('styleTheme', this.themeValue)
+          this.$KalixCatch.save('styleTheme', this.themeValue)
           // this.$refs.kalixHeader.setTheme(this.themeValue)
         }
       },
@@ -62,24 +64,35 @@
         let fun = this.$route.params.fun // 功能名称
         console.log('APP：', app)
         console.log('FUN：', fun)
+
+        if (fun !== undefined) {
+          this.which_to_show = app + fun.toLowerCase()
+        } else {
+          this.which_to_show = 'Welcome'
+        }
+        // console.log('content：', content[app + fun])
+        // content.
+
+        // this.which_to_show = app + fun
+
         this.initTheme()
       },
       changeTheme(value) {
         this.themeValue = value
         this.$http.request({
           method: 'PUT',
-          url: `/camel/rest/system/preferences/${Cache.get('loginname')}`,
+          url: `/camel/rest/system/preferences/${this.$KalixCatch.get('loginname')}`,
           params: {
             key: 'theme',
             value: value
           }
         }).then(res => {
         })
-        Cache.save('styleTheme', value)
+        this.$KalixCatch.save('styleTheme', value)
       },
       changePwd(txt) {
         let _data = {
-          jsonStr: '{"id":' + JSON.stringify(Cache.get('id')) + '}'
+          jsonStr: '{"id":' + JSON.stringify(this.$KalixCatch.get('id')) + '}'
         }
         this.$http.request(userURL, {
           params: _data
@@ -96,7 +109,8 @@
       }
     },
     components: {
-      KalixContent: content // 动态显示组件
+      // adminUser, // 动态显示组件
+      Welcome: Welcome
     }
   }
 </script>

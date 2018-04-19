@@ -3,11 +3,9 @@
  * Created by sunlf on 2017/7/21.
  */
 import axios from 'axios'
-import Message from 'common/message'
 import {baseURL} from 'config/global.toml'
-import {LoadingTimeOut} from 'config/info.toml'
-import Cache from 'common/cache'
 import Router from 'router'
+import Cache from 'kalix-vue-common/src/common/cache'
 
 // axios 配置
 axios.defaults.timeout = 5000
@@ -30,9 +28,9 @@ axios.interceptors.request.use(config => {
   return config
 }, error => {
   // loadinginstace.close()
-  Message.error({
-    message: LoadingTimeOut
-  })
+  // Vue.$KalixMessage.error({
+  //   message: LoadingTimeOut
+  // })
   return Promise.reject(error)
 })
 
@@ -91,7 +89,7 @@ if (navigator.userAgent.indexOf('Firefox') === -1) {
     } else {
       err.message = '连接服务器失败!'
     }
-    Message.error(err.message)
+    // Vue.$KalixMessage.error(err.message)
     // loadinginstace.close()
     // Message.error({
     //   message: LoadingFailure
