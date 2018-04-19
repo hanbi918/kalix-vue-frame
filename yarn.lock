@@ -3749,9 +3749,36 @@ jstransformer@1.0.0:
     is-promise "^2.0.0"
     promise "^7.0.1"
 
+kalix-vue-admin@^0.0.20:
+  version "0.0.20"
+  resolved "https://registry.npmjs.org/kalix-vue-admin/-/kalix-vue-admin-0.0.20.tgz#6b9699d840761a7bf7f9ff0e2875d9b00e2dc7f8"
+  dependencies:
+    kalix-vue-common "^0.0.6"
+    vue "^2.5.16"
+    vue-pay-keyboard "^1.1.5"
+
 kalix-vue-biz@^0.0.1:
   version "0.0.1"
   resolved "https://registry.npmjs.org/kalix-vue-biz/-/kalix-vue-biz-0.0.1.tgz#2d277b28ae7f456dcf01d98d0dfced828af1cf8a"
+  dependencies:
+    axios "^0.17.1"
+    cross-env "^5.1.4"
+    crypto-js "^3.1.9-1"
+    date-fns "^1.29.0"
+    easemob-websdk "^1.4.12"
+    echarts "^3.8.5"
+    element-ui "^2.0.4"
+    smooth-scrollbar "^8.2.3"
+    strophe.js "^1.2.14"
+    stylus "^0.54.5"
+    underscore "^1.8.3"
+    vue "^2.5.2"
+    vue-axios "^2.0.2"
+    vue-router "^3.0.1"
+
+kalix-vue-common@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.npmjs.org/kalix-vue-common/-/kalix-vue-common-0.0.6.tgz#0a54935cd97b343febf87c2730a28067b0ce5c1d"
   dependencies:
     axios "^0.17.1"
     cross-env "^5.1.4"
@@ -3793,25 +3820,6 @@ kalix-vue-navigate@^1.0.7:
   dependencies:
     vue "^2.5.16"
     vue-pay-keyboard "^1.1.5"
-
-kalix-vue-oa@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.npmjs.org/kalix-vue-oa/-/kalix-vue-oa-0.0.1.tgz#63547919161ea71a55ace4dbf98d99bb0f22f7a4"
-  dependencies:
-    axios "^0.17.1"
-    cross-env "^5.1.4"
-    crypto-js "^3.1.9-1"
-    date-fns "^1.29.0"
-    easemob-websdk "^1.4.12"
-    echarts "^3.8.5"
-    element-ui "^2.0.4"
-    smooth-scrollbar "^8.2.3"
-    strophe.js "^1.2.14"
-    stylus "^0.54.5"
-    underscore "^1.8.3"
-    vue "^2.5.2"
-    vue-axios "^2.0.2"
-    vue-router "^3.0.1"
 
 killable@^1.0.0:
   version "1.0.0"

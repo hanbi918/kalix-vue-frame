@@ -27,13 +27,16 @@ Vue.use(KalixVueNavigate)
 
 Vue.component(Squire.name, Squire)
 Vue.component(Tinymce.name, Tinymce)
-
-let moduleArr = []
+// 全局加载方式
 Vue.use(KalixVueAdmin)
-moduleArr.push(Vue.prototype.$module)
 Vue.use(KalixVueOA)
-moduleArr.push(Vue.prototype.$module)
-Vue.prototype.$modulePlugins = moduleArr
+// 异步加载方式
+// let moduleArr = []
+// Vue.use(KalixVueAdmin)
+// moduleArr.push(Vue.prototype.$module)
+// Vue.use(KalixVueOA)
+// moduleArr.push(Vue.prototype.$module)
+// Vue.prototype.$modulePlugins = moduleArr
 
 /* eslint-disable no-new */
 new Vue({

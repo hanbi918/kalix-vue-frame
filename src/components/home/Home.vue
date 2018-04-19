@@ -62,10 +62,11 @@
       fetchData() {
         let app = this.$route.params.app // 应用名称
         let fun = this.$route.params.fun // 功能名称
-        let moduleArr = this.$modulePlugins
+        // let moduleArr = this.$modulePlugins
         console.log('APP：', app)
         console.log('FUN：', fun)
         if (fun !== undefined) {
+          /**
           if (moduleArr.length) {
             moduleArr.forEach((item) => {
               if (item.moduleKeyArr) {
@@ -79,6 +80,8 @@
               }
             })
           }
+           **/
+          this.which_to_show = 'kalix-' + app + '-' + fun.toLowerCase()
         } else {
           this.which_to_show = 'Welcome'
         }
