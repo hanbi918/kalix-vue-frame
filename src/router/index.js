@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Cache from 'kalix-vue-common/src/common/cache'
 import Home from '@/components/home/Home'
 import Login from '@/components/login/login'
-import Cache from 'kalix-vue-common/src/common/cache'
 
 Vue.use(Router)
 

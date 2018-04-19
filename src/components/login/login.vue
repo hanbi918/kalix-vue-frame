@@ -23,6 +23,10 @@
 </template>
 
 <script type="text/ecmascript-6">
+  //  import Router from 'router'
+  // import Message from 'common/message'
+  // import Eventbus from 'common/eventbus'
+  // import Cache from 'common/cache'
   import Login from 'api/login'
   import {logoutUrl} from 'config/global.toml'
 
@@ -30,7 +34,6 @@
     name: 'LoginForm',
     data() {
       return {
-        name: 'Login Form',
         loginForm: {
           name: '',
           pass: ''

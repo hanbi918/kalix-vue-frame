@@ -62,19 +62,26 @@
       fetchData() {
         let app = this.$route.params.app // 应用名称
         let fun = this.$route.params.fun // 功能名称
+        let moduleArr = this.$modulePlugins
         console.log('APP：', app)
         console.log('FUN：', fun)
-
         if (fun !== undefined) {
-          this.which_to_show = app + fun.toLowerCase()
+          if (moduleArr.length) {
+            moduleArr.forEach((item) => {
+              if (item.moduleKeyArr) {
+                let keyArr = item.moduleKeyArr
+                for (let i = 0; i < keyArr.length; i++) {
+                  if (keyArr[i] === app + '#' + fun.toLowerCase()) {
+                    this.which_to_show = item.moduleResolveArr[app + '#' + fun.toLowerCase()]
+                    break
+                  }
+                }
+              }
+            })
+          }
         } else {
           this.which_to_show = 'Welcome'
         }
-        // console.log('content：', content[app + fun])
-        // content.
-
-        // this.which_to_show = app + fun
-
         this.initTheme()
       },
       changeTheme(value) {
