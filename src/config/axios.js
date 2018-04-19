@@ -9,7 +9,6 @@ import {LoadingTimeOut} from 'config/info.toml'
 import Cache from 'kalix-vue-common/src/common/cache'
 import Router from 'router'
 
-
 // axios 配置
 axios.defaults.timeout = 5000
 axios.defaults.baseURL = baseURL
