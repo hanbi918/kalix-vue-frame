@@ -13,10 +13,10 @@
   "dependencies": {
     "axios": "^0.18.0",
     "element-ui": "^2.3.4",
+    "kalix-vue-admin": "^0.2.9",
+    "kalix-vue-biz": "^0.0.4",
     "kalix-vue-common": "^0.0.7",
-    "kalix-vue-biz": "^0.0.1",
     "kalix-vue-navigate": "^1.0.7",
-    "kalix-vue-admin": "^0.0.20",
     "vue": "^2.5.2",
     "vue-axios": "^2.1.1",
     "vue-router": "^3.0.1"

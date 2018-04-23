@@ -5,6 +5,8 @@
     ref="kalixHeader"
     v-on:onClickChangePwd="changePwd"
     v-on:onClickUpdateUserInfo="updateUserInfo")
+    admin-user-editpwd(ref="userEditpwd")
+    admin-user-edit(ref="userEdit")
     div.s-flex.container
       kalix-navigate(v-bind:cacheTime="7200000" v-bind:url="systemApplicationsBaseURL")
       div.s-flex_item.article
@@ -109,13 +111,13 @@
         }).then(res => {
           if (res.data.data && res.data.data.length) {
             // 修改密码
-            // this.$refs.userEdit.open(res.data.data[0])
+            this.$refs.userEditpwd.open(res.data.data[0])
           }
         })
       },
       updateUserInfo(row) {
         // 修改个人信息
-        // this.$refs.userEdit.open(row)
+        this.$refs.userEdit.open(row)
       }
     },
     components: {
