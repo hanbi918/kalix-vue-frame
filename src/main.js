@@ -8,7 +8,7 @@ import Es6Promise from 'es6-promise'
 import KalixVueNavigate from 'kalix-vue-navigate'
 import KalixVueCommon from 'kalix-vue-common'
 import KalixVueBiz from 'kalix-vue-biz'
-import KalixVueOA from 'kalix-vue-oa'
+// import KalixVueOA from 'kalix-vue-oa'
 import KalixVueAdmin from 'kalix-vue-admin'
 import './element-ui'
 import Tinymce from './components/Tinymce'
@@ -29,7 +29,7 @@ Vue.component(Squire.name, Squire)
 Vue.component(Tinymce.name, Tinymce)
 // 全局加载方式
 Vue.use(KalixVueAdmin)
-Vue.use(KalixVueOA)
+// Vue.use(KalixVueOA)
 // 异步加载方式
 // let moduleArr = []
 // Vue.use(KalixVueAdmin)
